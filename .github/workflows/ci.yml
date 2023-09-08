@@ -4,9 +4,13 @@ on:
   pull_request:
     branches:
       - main
+    types:
+      - closed
 
 jobs:
   changed_files:
+    name: Test
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -20,4 +24,4 @@ jobs:
             *.txt
 
       - name: Print changed files
-        run: echo "all_changed_files=${{ steps.changed_files.outputs.all_changed_files }}"
+        run: echo "all_modified_files=${{ steps.changed_files.outputs.all_modified_files }}"
