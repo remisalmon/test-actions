@@ -14,9 +14,10 @@ jobs:
 
       - name: Get changed files
         id: changed_files
-        uses: tj-actions/changed-files@v35.4.4
+        uses: tj-actions/changed-files@v38
         with:
-          files: "*.txt"
+          files: |
+            *.txt
 
       - name: Print changed files
         run: echo "all_changed_files=${{ steps.changed_files.outputs.all_changed_files }}"
